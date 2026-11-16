@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Library Management System</h1>
+    <p>Manage inventory, search catalog, and track student book issues</p>
+  </header>
+
+  <main class="container">
+    <!-- Status / Error Banner -->
+    <div id="feedback-msg" class="feedback hidden" role="alert"></div>
+
+    <!-- Task 1: Add Book -->
+    <section class="card">
+      <h2>Add New Book</h2>
+      <form id="add-book-form" class="form-grid">
+        <div class="field">
+          <label for="book-id">Book ID</label>
+          <input type="number" id="book-id" min="1" placeholder="e.g., 101" required />
+        </div>
+        <div class="field">
+          <label for="book-title">Title</label>
+          <input type="text" id="book-title" placeholder="e.g., Clean Code" required />
+        </div>
+        <div class="field">
+          <label for="book-author">Author</label>
+          <input type="text" id="book-author" placeholder="e.g., Robert C. Martin" required />
+        </div>
+        <div class="field">
+          <label for="book-year">Publication Year</label>
+          <input type="number" id="book-year" min="1000" max="2026" placeholder="e.g., 2008" required />
+        </div>
+        <div class="field">
+          <label for="book-copies">Available Copies</label>
+          <input type="number" id="book-copies" min="0" placeholder="e.g., 5" required />
+        </div>
+        <div class="field align-end">
+          <button type="submit" class="btn primary">Add Book</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Task 3 & Tasks 4-5 Row -->
+    <div class="two-col">
+      <!-- Task 3: Search for a Book -->
+      <section class="card">
+        <h2>Search Catalog</h2>
+        <div class="search-row">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Enter Book ID or Title..."
+            aria-label="Search by Book ID or Title"
+          />
+          <button type="button" id="search-btn" class="btn secondary">Search</button>
+        </div>
+        <div id="search-result" class="search-result">
+          <p class="muted">Enter a Book ID or title above to check details and availability.</p>
+        </div>
+      </section>
+
+      <!-- Tasks 4 & 5: Issue & Return Book -->
+      <section class="card">
+        <h2>Issue / Return Book</h2>
+        <div class="form-stack">
+          <div class="field">
+            <label for="action-book-id">Book ID</label>
+            <input type="number" id="action-book-id" min="1" placeholder="e.g., 101" />
+          </div>
+          <div class="field">
+            <label for="action-student-id">Student ID</label>
+            <input type="text" id="action-student-id" placeholder="e.g., STU202501" />
+          </div>
+          <div class="btn-group">
+            <button type="button" id="issue-btn" class="btn primary">Issue Book</button>
+            <button type="button" id="return-btn" class="btn outline">Return Book</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Task 2: Display All Books -->
+    <section class="card">
+      <div class="section-header">
+        <h2>All Registered Books</h2>
+        <span id="book-count" class="badge">0 Books</span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Book ID</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Year</th>
+              <th>Available Copies</th>
+            </tr>
+          </thead>
+          <tbody id="books-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Task 6: Display Currently Issued Books -->
+    <section class="card">
+      <div class="section-header">
+        <h2>Currently Issued Books</h2>
+        <span id="issue-count" class="badge">0 Active</span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Book ID</th>
+              <th>Book Title</th>
+              <th>Student ID</th>
+              <th>Issue Status</th>
+            </tr>
+          </thead>
+          <tbody id="issues-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
